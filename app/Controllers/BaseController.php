@@ -35,7 +35,7 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['form'];
 
     /**
      * Constructor.
@@ -48,5 +48,49 @@ class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+        date_default_timezone_set('Asia/Jakarta');
+        setlocale(LC_MONETARY, "id_ID");
+    }
+
+    //INTERNAL FUNCTION
+    function set_session_msg($color = '', $msg = '')
+    {
+        if (!$color && !$msg) unset($_SESSION['msg']);
+
+        $_SESSION['msg'] = [
+            'color' => $color,
+            'desc' => $msg
+        ];
+    }
+
+    function upload_the_file($file, $mustUploaded = FALSE)
+    {
+        $filename = NULL;
+
+        if (($file = $this->request->getFile('food_img')) != NULL) {
+            if (!$file->isValid()) {
+                $this->set_session_msg(
+                    'red',
+                    '[ERROR] Berkas upload tidak valid pada sisi server!'
+                );
+                return 'ERROR';
+            }
+
+            $filename = date('YmdHis') . $file->getName();
+            if (!$file->move(ROOTPATH . 'public\images', $filename)) {
+                $this->set_session_msg(
+                    'red',
+                    '[ERROR] Terdapat kesalahan dalam pemindahan berkas!'
+                );
+                return 'ERROR';
+            }
+        } else if ($mustUploaded) {
+            $this->set_session_msg(
+                'red',
+                '[ERROR] Terdapat kesalahan saat membaca berkas!'
+            );
+            return 'ERROR';
+        }
+        return $filename;
     }
 }
