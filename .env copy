@@ -37,12 +37,12 @@ app.baseURL = 'http://localhost:8080/'
 # DATABASE
 #--------------------------------------------------------------------
 
-database.default.hostname = localhost:3306
-database.default.database = db_perpus
+database.default.hostname = localhost
+database.default.database = db_resto_anyar
 database.default.username = root
-database.default.password = root
-database.default.DBDriver = MySQLi
-database.default.DBPrefix =
+database.default.password = 
+#database.default.DBDriver = MySQLi
+#database.default.DBPrefix =
 
 # database.tests.hostname = localhost
 # database.tests.database = ci4

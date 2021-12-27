@@ -62,35 +62,4 @@ class BaseController extends Controller
             'desc' => $msg
         ];
     }
-
-    function upload_the_file($file, $mustUploaded = FALSE)
-    {
-        $filename = NULL;
-
-        if (($file = $this->request->getFile('food_img')) != NULL) {
-            if (!$file->isValid()) {
-                $this->set_session_msg(
-                    'red',
-                    '[ERROR] Berkas upload tidak valid pada sisi server!'
-                );
-                return 'ERROR';
-            }
-
-            $filename = date('YmdHis') . $file->getName();
-            if (!$file->move(ROOTPATH . 'public\images', $filename)) {
-                $this->set_session_msg(
-                    'red',
-                    '[ERROR] Terdapat kesalahan dalam pemindahan berkas!'
-                );
-                return 'ERROR';
-            }
-        } else if ($mustUploaded) {
-            $this->set_session_msg(
-                'red',
-                '[ERROR] Terdapat kesalahan saat membaca berkas!'
-            );
-            return 'ERROR';
-        }
-        return $filename;
-    }
 }
