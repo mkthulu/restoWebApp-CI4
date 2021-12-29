@@ -2,13 +2,15 @@
 <!-- right content -->
 <div id="content">
     <!-- topbar -->
+  
     <div class="topbar">
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light d-flex" >
             <div class="full d-flex align-items-center">
                 <button type="button" id="sidebarCollapse" class="sidebar_toggle">
                     <i class="fa fa-bars"></i>
                 </button>
                 <h1 class="text-white ml-3">RESTO ANYAR</h1>
+               
             </div>
         </nav>
     </div>

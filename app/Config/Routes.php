@@ -54,6 +54,7 @@ $routes->get('/admin/change_password', 'Admin::change_password');
 
 // --------------- GUEST
 $routes->get('/', 'Guest::index');
+$routes->get('/aboutus', 'Guest::aboutUs');
 
 $routes->get('/guest/food_cards', 'Guest::food_cards');
 

@@ -25,6 +25,10 @@ class Guest extends BaseController
     }
 
 
+    public function aboutUs(){
+
+        return view('guest/landingPage');
+    }
 
 
     // PAGE >> FOOD LIST
