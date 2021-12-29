@@ -39,11 +39,11 @@ git clone https://github.com/wgnalvian/restoWebApp-CI4.git
 SQL file berada pada folder "### DATABASE ###"
 
 
-<<<<<<< HEAD
+
 **2.** Set CI_ENVIRONMENT, base url, index page, and database config in your `.env` file based on your existing database (If you don't have a `.env` file, you can copy first from `env` file: `cp env .env` first).
-=======
-**2.** copy file `.env.copy`  menjadi `.env` lalu setting sesuai database server kamu
->>>>>>> e4b5f3f16919dd5135f684885bb5ed99a8c30551
+
+**2.1** copy file `.env.copy`  menjadi `.env` lalu setting sesuai database server kamu
+
 
 ```bash
 # .env file
