@@ -293,18 +293,4 @@ class Guest extends BaseController
         unset($_SESSION['loggedIn']);
         unset($_SESSION['finished']);
     }
-
-
-
-
-    //INTERNAL FUNCTION
-    function set_session_msg($color = '', $msg = '')
-    {
-        if (!$color && !$msg) unset($_SESSION['msg']);
-
-        $_SESSION['msg'] = [
-            'color' => $color,
-            'desc' => $msg
-        ];
-    }
 }

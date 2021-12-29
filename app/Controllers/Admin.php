@@ -218,11 +218,10 @@ class Admin extends BaseController
             return $this->food_list_detail($id);
         }
 
-        // Upload file if exist
+        // Try to upload file
         $filename = NULL;
-        $file = $this->request->getFile('food_img');
-        if ($this->upload_the_file($file) == 'ERROR') {
-            return $this->food_list_detail($id);
+        if (($filename = $this->upload_the_file($this->request->getFile('food_img'))) == 'ERROR') {
+            $filename = NULL;
         }
 
         $row = [
@@ -264,7 +263,7 @@ class Admin extends BaseController
         // Upload the file then verify if its exist
         $filename = NULL;
         $file = $this->request->getFile('food_img');
-        if ($this->upload_the_file($file, TRUE) == 'ERROR') {
+        if (($filename = $this->upload_the_file($file)) == 'ERROR') {
             return $this->food_form();
         }
 
@@ -451,11 +450,10 @@ class Admin extends BaseController
         ];
     }
 
-    function upload_the_file($file, $mustUploaded = FALSE)
+    function upload_the_file($file)
     {
         $filename = NULL;
-
-        if (($file = $this->request->getFile('food_img')) != NULL) {
+        if ($file != NULL) {
             if (!$file->isValid()) {
                 $this->set_session_msg(
                     'red',
@@ -472,7 +470,7 @@ class Admin extends BaseController
                 );
                 return 'ERROR';
             }
-        } else if ($mustUploaded) {
+        } else {
             $this->set_session_msg(
                 'red',
                 '[ERROR] Terdapat kesalahan saat membaca berkas!'
