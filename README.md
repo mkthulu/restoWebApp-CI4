@@ -56,7 +56,7 @@ database.default.database = ci4_crud
 database.default.username = root
 database.default.password = <root_password>
 ```
-
+**2.2** Install dependecy with command `composer i`
 **3.** Run development server:
 
 ```bash
